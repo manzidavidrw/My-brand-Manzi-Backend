@@ -8,11 +8,11 @@ const express_1 = __importDefault(require("express"));
 const commentController_1 = require("../controllers/commentController");
 const router = express_1.default.Router();
 // Create a new comment for the specified blog post
-router.post('/:id', commentController_1.CreateComment);
+router.post('/:id/comments', commentController_1.CreateComment);
 // Get comments for the specified blog post
-router.get('/:id', commentController_1.getCommentsByBlogId);
+router.get('/:id/comments', commentController_1.getCommentsByBlogId);
 // Update a comment by its ID for the specified blog post
-router.put('/:id', commentController_1.updateComment);
+router.put('/:id/comments', commentController_1.updateComment);
 // Delete a comment by its ID for the specified blog post
-router.delete('/:id', commentController_1.deleteComment);
+router.delete('/:id/comments', commentController_1.deleteComment);
 exports.default = router;

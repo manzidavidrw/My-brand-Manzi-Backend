@@ -16,7 +16,7 @@ mongoose_1.default.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: t
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error(err));
 app.use('/api/blogs', blogRoutes_1.default);
-app.use('/api/blogs/comments', commentRoutes_1.default);
+app.use('/api/blogs', commentRoutes_1.default);
 app.use('/api/messages', messageRoutes_1.default);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

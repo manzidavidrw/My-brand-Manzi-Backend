@@ -17,7 +17,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true } as a
 
 
 app.use('/api/blogs', blogRoutes);
-app.use('/api/blogs/comments', commentRoutes);
+app.use('/api/blogs', commentRoutes);
 app.use('/api/messages', messageRoutes);
 
 const PORT = process.env.PORT || 3000;
