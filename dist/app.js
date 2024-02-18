@@ -18,6 +18,7 @@ mongoose_1.default.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: t
 app.use('/api/blogs', blogRoutes_1.default);
 app.use('/api/blogs', commentRoutes_1.default);
 app.use('/api/messages', messageRoutes_1.default);
+app.use('/api/blogs', messageRoutes_1.default);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

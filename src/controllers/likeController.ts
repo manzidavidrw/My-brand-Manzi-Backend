@@ -15,5 +15,5 @@ export const createLike = async (req: Request, res: Response) => {
     res.status(201).json({ message: 'Like created successfully' });
   } catch (error:any) {
     res.status(400).json({ message: error.message });
-  }
+}
 };
