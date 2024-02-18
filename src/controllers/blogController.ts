@@ -2,6 +2,7 @@
 import { Request, Response } from 'express';
 import Blog from '../models/Blog';
 import { Error } from 'mongoose';
+import cloudinary from 'cloudinary';
 
 export const createBlog = async (req: Request, res: Response) => {
     try {
@@ -11,6 +12,7 @@ export const createBlog = async (req: Request, res: Response) => {
         res.status(400).json({ message: err.message });
     }
 };
+
 
 export const getBlogs = async (req: Request, res: Response) => {
     try {

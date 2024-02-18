@@ -1,10 +1,12 @@
 // src/routes/blogRoutes.ts
 import express from 'express';
+import multer from 'multer';
 import * as blogController from '../controllers/blogController';
 
 const router = express.Router();
+const upload = multer({ dest: 'uploads/' });
 
-router.post('/', blogController.createBlog);
+router.post('/', upload.single('image'), blogController.createBlog);
 router.get('/', blogController.getBlogs);
 router.get('/:id', blogController.getBlogById);
 router.patch('/:id', blogController.updateBlog);
