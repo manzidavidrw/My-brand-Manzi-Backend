@@ -10,4 +10,4 @@ const likeSchema: Schema = new Schema({
   blogId: { type: String, required: true },
 });
 
-export default mongoose.model<Like>('Like', likeSchema);
+export default mongoose.model<Like>('Like', likeSchema);
