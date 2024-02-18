@@ -9,6 +9,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const blogRoutes_1 = __importDefault(require("./routes/blogRoutes"));
 const commentRoutes_1 = __importDefault(require("./routes/commentRoutes"));
 const messageRoutes_1 = __importDefault(require("./routes/messageRoutes"));
+const likeRoutes_1 = __importDefault(require("./routes/likeRoutes"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 const dbURI = 'mongodb://localhost:27017/myblog';
@@ -18,7 +19,7 @@ mongoose_1.default.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: t
 app.use('/api/blogs', blogRoutes_1.default);
 app.use('/api/blogs', commentRoutes_1.default);
 app.use('/api/messages', messageRoutes_1.default);
-app.use('/api/blogs', messageRoutes_1.default);
+app.use('/api/blogs', likeRoutes_1.default);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

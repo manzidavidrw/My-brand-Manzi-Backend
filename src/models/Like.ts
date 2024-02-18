@@ -1,12 +1,12 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
 export interface Like extends Document {
-  userId: string;
+  like: Boolean;
   blogId: string;
 }
 
 const likeSchema: Schema = new Schema({
-  userId: { type: String, required: true },
+  like: { type: Boolean, required: true},
   blogId: { type: String, required: true },
 });
 

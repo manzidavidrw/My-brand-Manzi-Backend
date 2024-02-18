@@ -6,6 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.likeSchema = void 0;
 const joi_1 = __importDefault(require("joi"));
 exports.likeSchema = joi_1.default.object({
-    userId: joi_1.default.string().required(),
+    like: joi_1.default.boolean().required(),
     blogId: joi_1.default.string().required(),
 });

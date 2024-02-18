@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
 export const likeSchema = Joi.object({
-  userId: Joi.string().required(),
+  like: Joi.boolean().required(),
   blogId: Joi.string().required(),
 });

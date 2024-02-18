@@ -25,7 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
 const likeSchema = new mongoose_1.Schema({
-    userId: { type: String, required: true },
+    like: { type: Boolean, required: true },
     blogId: { type: String, required: true },
 });
 exports.default = mongoose_1.default.model('Like', likeSchema);

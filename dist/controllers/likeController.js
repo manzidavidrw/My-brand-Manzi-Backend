@@ -17,13 +17,13 @@ const Like_1 = __importDefault(require("../models/Like"));
 const likeValidators_1 = require("../validators/likeValidators");
 const createLike = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { userId, blogId } = req.body;
-        const { error } = likeValidators_1.likeSchema.validate({ userId, blogId });
+        const { like, blogId } = req.body;
+        const { error } = likeValidators_1.likeSchema.validate({ like, blogId });
         if (error) {
             throw new Error(error.details[0].message);
         }
-        const like = new Like_1.default({ userId, blogId });
-        yield like.save();
+        const likes = new Like_1.default({ like, blogId });
+        yield likes.save();
         res.status(201).json({ message: 'Like created successfully' });
     }
     catch (error) {
