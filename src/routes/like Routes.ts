@@ -3,6 +3,6 @@ import { createLike } from '../controllers/likeController';
 
 const router = express.Router();
 
-router.post('/likes', createLike);
+router.post('/:id/likes', createLike);
 
 export default router;
