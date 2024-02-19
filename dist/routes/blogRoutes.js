@@ -28,11 +28,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 // src/routes/blogRoutes.ts
 const express_1 = __importDefault(require("express"));
-const multer_1 = __importDefault(require("multer"));
+// import multer from 'multer';
 const blogController = __importStar(require("../controllers/blogController"));
 const router = express_1.default.Router();
-const upload = (0, multer_1.default)({ dest: 'uploader/' });
-router.post('/', upload.single('imageUrl'), blogController.createBlog);
+// const upload = multer({ dest: 'uploader/' });
+router.post('/', blogController.createBlog);
 router.get('/', blogController.getBlogs);
 router.get('/:id', blogController.getBlogById);
 router.patch('/:id', blogController.updateBlog);
