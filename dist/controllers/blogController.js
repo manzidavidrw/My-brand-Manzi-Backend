@@ -12,11 +12,34 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteBlog = exports.updateBlog = exports.getBlogById = exports.getBlogs = exports.createBlog = void 0;
+exports.deleteBlog = exports.updateBlog = exports.getBlogById = exports.getBlogs = exports.createBlog = exports.uploadImageToCloudinary = void 0;
 const Blog_1 = __importDefault(require("../models/Blog"));
+const mongoose_1 = require("mongoose");
+const cloudinary_1 = __importDefault(require("cloudinary"));
+const BlogValidationSchema_1 = require("../validators/BlogValidationSchema");
+const uploadImageToCloudinary = (imagePath) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield cloudinary_1.default.v2.uploader.upload(imagePath);
+        return result.secure_url;
+    }
+    catch (error) {
+        throw new mongoose_1.Error('Error uploading image to Cloudinary');
+    }
+});
+exports.uploadImageToCloudinary = uploadImageToCloudinary;
 const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const blog = yield Blog_1.default.create(req.body);
+        const { error } = BlogValidationSchema_1.blogValidationSchema.validate(req.body);
+        if (error) {
+            return res.status(400).json({ error: error.details[0].message });
+        }
+        const { title, content } = req.body;
+        const imagePath = req.file ? req.file.path : undefined;
+        if (!imagePath) {
+            return res.status(400).json({ error: 'No image uploaded' });
+        }
+        const imageUrl = yield (0, exports.uploadImageToCloudinary)(imagePath);
+        const blog = yield Blog_1.default.create({ title, content, imageUrl });
         res.status(201).json(blog);
     }
     catch (err) {

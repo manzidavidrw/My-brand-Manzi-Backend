@@ -4,8 +4,8 @@ import mongoose from 'mongoose';
 import blogRoutes from './routes/blogRoutes';
 import commentRoutes from './routes/commentRoutes';
 import messageRoutes from './routes/messageRoutes';
-import likeRoutes from './routes/likeRoutes'
-import { createLike } from './controllers/likeController';
+import likeRoutes from './routes/likeRoutes';
+import cloudinary from 'cloudinary';
 
 const app = express();
 

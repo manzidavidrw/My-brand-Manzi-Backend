@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteComment = exports.updateComment = exports.getCommentsByBlogId = exports.CreateComment = void 0;
 const Comment_1 = __importDefault(require("../models/Comment"));
+const commentValidators_1 = require("../validators/commentValidators");
 class CustomResponse {
     constructor(req, res) {
         this.req = req;
@@ -30,7 +31,11 @@ exports.default = CustomResponse;
 const CreateComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const response = new CustomResponse(req, res);
     try {
-        const { name, email, comment } = req.body;
+        const { error, value } = commentValidators_1.commentSchema.validate(req.body);
+        if (error) {
+            return response.send(null, error.message, 400);
+        }
+        const { name, email, comment } = value;
         const { id: blogId } = req.params;
         const newComment = new Comment_1.default({
             name,

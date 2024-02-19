@@ -2,7 +2,7 @@
 import { Request, Response } from 'express';
 import Comment from '../models/Comment';
 import Blog from '../models/Blog';
-import { Types } from 'mongoose';
+import {commentSchema} from '../validators/commentValidators';
 
 interface IReqBodyComment extends Request {
   body: {
@@ -38,7 +38,13 @@ export default CustomResponse;
 export const  CreateComment= async(req: IReqBodyComment, res: Response) =>{
   const response = new CustomResponse(req, res);
   try {
-    const { name, email, comment } = req.body;
+    const { error, value } = commentSchema.validate(req.body);
+
+    if (error) {
+      return response.send(null, error.message, 400);
+    }
+
+    const { name, email, comment } = value;
     const { id: blogId } = req.params;
     const newComment = new Comment({
       name,
