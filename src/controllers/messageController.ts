@@ -1,9 +1,16 @@
 // controllers/messageController.ts
 import { Request, Response } from 'express';
 import Message, { IMessage } from '../models/Message';
+import {messageSchema} from '../validators/messageValidotors'
 
 export const createMessage = async (req: Request, res: Response): Promise<void> => {
     try {
+       const { error, value } = messageSchema.validate(req.body);
+
+    // If there's an error, send a 400 response with the error message
+    if (error) {
+        res.status(400).json({ error: error.message });
+    }
       const message: IMessage = req.body;
       const newMessage = new Message(message); // Create a new instance of Message model
       const savedMessage = await newMessage.save(); // Save the new message to the database

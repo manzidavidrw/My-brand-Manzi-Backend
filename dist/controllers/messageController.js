@@ -14,8 +14,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteMessage = exports.updateMessage = exports.getMessageById = exports.getMessages = exports.createMessage = void 0;
 const Message_1 = __importDefault(require("../models/Message"));
+const messageValidotors_1 = require("../validators/messageValidotors");
 const createMessage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const { error, value } = messageValidotors_1.messageSchema.validate(req.body);
+        // If there's an error, send a 400 response with the error message
+        if (error) {
+            res.status(400).json({ error: error.message });
+        }
         const message = req.body;
         const newMessage = new Message_1.default(message); // Create a new instance of Message model
         const savedMessage = yield newMessage.save(); // Save the new message to the database
