@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.messageSchema = void 0;
 const joi_1 = __importDefault(require("joi"));
 exports.messageSchema = joi_1.default.object({
-    content: joi_1.default.string().required(),
-    sender: joi_1.default.string().required(),
-    receiver: joi_1.default.string().required()
+    content: joi_1.default.string().min(30).required(),
+    sender: joi_1.default.string().min(2).required(),
+    receiver: joi_1.default.string().min(2).required()
 });

@@ -5,7 +5,7 @@ import {likeSchema} from '../validators/likeValidators';
 export const createLike = async (req: Request, res: Response) => {
   try {
     const { like, blogId } = req.body;
-    const { error } = likeSchema.validate({ like, blogId });
+    const { error, value } = likeSchema.validate({ like, blogId });
     if (error) {
       throw new Error(error.details[0].message);
     }

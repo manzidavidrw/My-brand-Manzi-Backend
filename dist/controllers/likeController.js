@@ -18,7 +18,7 @@ const likeValidators_1 = require("../validators/likeValidators");
 const createLike = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { like, blogId } = req.body;
-        const { error } = likeValidators_1.likeSchema.validate({ like, blogId });
+        const { error, value } = likeValidators_1.likeSchema.validate({ like, blogId });
         if (error) {
             throw new Error(error.details[0].message);
         }
