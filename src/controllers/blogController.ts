@@ -2,18 +2,8 @@
 import { Request, Response } from 'express';
 import Blog from '../models/Blog';
 import { Error } from 'mongoose';
-// import cloudinary from 'cloudinary';
+import cloudinary from '../image/cloudimage';
 import { blogValidationSchema } from '../validators/BlogValidationSchema';
-
-
-// export const uploadImageToCloudinary = async (imagePath: string): Promise<string> => {
-//     try {
-//       const result = await cloudinary.v2.uploader.upload(imagePath);
-//       return result.secure_url;
-//     } catch (error) {
-//       throw new Error('Error uploading image to Cloudinary');
-//     }
-// }
 
 
 export const createBlog = async (req: Request, res: Response) => {
@@ -24,12 +14,20 @@ export const createBlog = async (req: Request, res: Response) => {
     if (error) {
       return res.status(400).json({ error: error.details[0].message });
     }
-    //     const imagePath = req.file ? req.file.path : undefined;
-    // if (!imagePath) {
-    //   return res.status(400).json({ error: 'No image uploaded' });
-    // }
-        // const imageUrl = await uploadImageToCloudinary(imagePath);
-        const blog = await Blog.create({ title, content});
+
+   
+//   if (!req.user || !("userName" in req.user)) {
+//     return res.send({ data: [], message: "No UserName provided", error: null });
+//   }
+
+    if (!req.file) {
+        return res.status(400).json({ error: 'No file uploaded' });
+    }
+
+
+    const result = await cloudinary.uploader.upload(req.file.path);
+
+        const blog = await Blog.create({ title, content,image: result.secure_url});
 
         res.status(201).json(blog);
     } catch (err:any) {
@@ -40,7 +38,7 @@ export const createBlog = async (req: Request, res: Response) => {
 export const getBlogs = async (req: Request, res: Response) => {
     try {
         const blogs = await Blog.find();
-        res.json(blogs);
+        res.status(201).json(blogs);
     } catch (err) {
         res.status(500).json({ message: (err as Error).message });
     }

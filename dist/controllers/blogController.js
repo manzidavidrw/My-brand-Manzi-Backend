@@ -14,16 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteBlog = exports.updateBlog = exports.getBlogById = exports.getBlogs = exports.createBlog = void 0;
 const Blog_1 = __importDefault(require("../models/Blog"));
-// import cloudinary from 'cloudinary';
+const cloudimage_1 = __importDefault(require("../image/cloudimage"));
 const BlogValidationSchema_1 = require("../validators/BlogValidationSchema");
-// export const uploadImageToCloudinary = async (imagePath: string): Promise<string> => {
-//     try {
-//       const result = await cloudinary.v2.uploader.upload(imagePath);
-//       return result.secure_url;
-//     } catch (error) {
-//       throw new Error('Error uploading image to Cloudinary');
-//     }
-// }
 const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { title, content } = req.body;
@@ -31,12 +23,14 @@ const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         if (error) {
             return res.status(400).json({ error: error.details[0].message });
         }
-        //     const imagePath = req.file ? req.file.path : undefined;
-        // if (!imagePath) {
-        //   return res.status(400).json({ error: 'No image uploaded' });
-        // }
-        // const imageUrl = await uploadImageToCloudinary(imagePath);
-        const blog = yield Blog_1.default.create({ title, content });
+        //   if (!req.user || !("userName" in req.user)) {
+        //     return res.send({ data: [], message: "No UserName provided", error: null });
+        //   }
+        if (!req.file) {
+            return res.status(400).json({ error: 'No file uploaded' });
+        }
+        const result = yield cloudimage_1.default.uploader.upload(req.file.path);
+        const blog = yield Blog_1.default.create({ title, content, image: result.secure_url });
         res.status(201).json(blog);
     }
     catch (err) {
