@@ -31,16 +31,16 @@ export const createUser = async (req: Request, res: Response) => {
       const newUser = new User({ ...userData, password: hashedPassword });
       const created = await newUser.save();
       if (created) {
-        const jwtSecret = "your_secret_key";
+        const jwtSecret = (process.env.JWT_SECRET as string) || "secret";
         const tokenExpire = process.env.TOKEN_EXPIRES || "2h";
         const token = jwt.sign({ userId: created._id }, jwtSecret, {
           expiresIn: tokenExpire,
         });
 
-        res.status(200).header("Authorization", `OTP: ${token}`).send({
-  
-          message: "Signed in successfully!!"
-          
+        res.status(200).header("Authorization", `Bearer ${token}`).send({
+          data: token,
+          message: "Signed in successfully!!",
+          error: null,
         });
       }
     }
@@ -73,14 +73,16 @@ export const loginUser = async (req: Request, res: Response) => {
           error: null,
         });
       } else {
-        const jwtSecret = "your_secret_key";
+        const jwtSecret = (process.env.JWT_SECRET as string) || "secret";
         const tokenExpire = process.env.TOKEN_EXPIRES || "2h";
         const token = jwt.sign({ userId: user._id }, jwtSecret, {
           expiresIn: tokenExpire,
         });
 
-        res.status(200).header("Authorization", `OTP: ${token}`).send({
-          message: "logged in successfully!!"
+        res.status(200).header("Authorization", `Bearer ${token}`).send({
+          data: token,
+          message: "Signed in successfully!!",
+          error: null,
         });
       }
     } else {

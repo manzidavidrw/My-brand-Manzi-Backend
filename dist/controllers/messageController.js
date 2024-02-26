@@ -82,7 +82,6 @@ const deleteMessage = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         res.sendStatus(204);
     }
     catch (error) {
-        console.error(error);
         res.status(500).json({ message: 'Internal server error' });
     }
 });

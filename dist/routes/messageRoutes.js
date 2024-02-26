@@ -29,9 +29,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // routes/messageRoutes.ts
 const express_1 = __importDefault(require("express"));
 const messageController = __importStar(require("../controllers/messageController"));
-const auth = __importStar(require("../middlewares/authenticatication"));
 const router = express_1.default.Router();
-router.post('/', auth.isAuthenticated, messageController.createMessage);
+router.post('/', messageController.createMessage);
 router.get('/', messageController.getMessages);
 router.get('/:id', messageController.getMessageById);
 router.put('/:id', messageController.updateMessage);

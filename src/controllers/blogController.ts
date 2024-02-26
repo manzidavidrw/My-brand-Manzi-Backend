@@ -15,10 +15,6 @@ export const createBlog = async (req: Request, res: Response) => {
       return res.status(400).json({ error: error.details[0].message });
     }
 
-   
-//   if (!req.user || !("userName" in req.user)) {
-//     return res.send({ data: [], message: "No UserName provided", error: null });
-//   }
 
     if (!req.file) {
         return res.status(400).json({ error: 'No file uploaded' });

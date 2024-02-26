@@ -39,13 +39,15 @@ const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             const newUser = new User_1.default(Object.assign(Object.assign({}, userData), { password: hashedPassword }));
             const created = yield newUser.save();
             if (created) {
-                const jwtSecret = "your_secret_key";
+                const jwtSecret = process.env.JWT_SECRET || "secret";
                 const tokenExpire = process.env.TOKEN_EXPIRES || "2h";
                 const token = jsonwebtoken_1.default.sign({ userId: created._id }, jwtSecret, {
                     expiresIn: tokenExpire,
                 });
-                res.status(200).header("Authorization", `OTP: ${token}`).send({
-                    message: "Signed in successfully!!"
+                res.status(200).header("Authorization", `Bearer ${token}`).send({
+                    data: token,
+                    message: "Signed in successfully!!",
+                    error: null,
                 });
             }
         }
@@ -75,13 +77,15 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 });
             }
             else {
-                const jwtSecret = "your_secret_key";
+                const jwtSecret = process.env.JWT_SECRET || "secret";
                 const tokenExpire = process.env.TOKEN_EXPIRES || "2h";
                 const token = jsonwebtoken_1.default.sign({ userId: user._id }, jwtSecret, {
                     expiresIn: tokenExpire,
                 });
-                res.status(200).header("Authorization", `OTP: ${token}`).send({
-                    message: "logged in successfully!!"
+                res.status(200).header("Authorization", `Bearer ${token}`).send({
+                    data: token,
+                    message: "Signed in successfully!!",
+                    error: null,
                 });
             }
         }

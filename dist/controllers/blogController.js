@@ -23,9 +23,6 @@ const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         if (error) {
             return res.status(400).json({ error: error.details[0].message });
         }
-        //   if (!req.user || !("userName" in req.user)) {
-        //     return res.send({ data: [], message: "No UserName provided", error: null });
-        //   }
         if (!req.file) {
             return res.status(400).json({ error: 'No file uploaded' });
         }
@@ -41,7 +38,7 @@ exports.createBlog = createBlog;
 const getBlogs = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const blogs = yield Blog_1.default.find();
-        res.json(blogs);
+        res.status(201).json(blogs);
     }
     catch (err) {
         res.status(500).json({ message: err.message });
