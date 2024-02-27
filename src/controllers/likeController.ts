@@ -17,21 +17,11 @@ export const createLike = async (req: Request, res: Response) => {
     res.status(400).json({ message: error.message });
 }
 };
-// export const getLikes = async (req: Request, res: Response) => {
-//   try {
-//     const { blogId } = req.params; 
-//     const likes = await Like.find({ blogId }); 
-    
 
-//     res.status(200).json({ likes });
-//   } catch (error) {
-//     res.status(500).json({ message: "Internal Server Error" });
-//   }
-// };
 export const getLikes= async (req: Request, res: Response) => {
   try {
     const  blogId  = req.params.id;
-    // const commentid=req.params.id;
+   
       const blog = await Like.find();
      
       res.json(blog);

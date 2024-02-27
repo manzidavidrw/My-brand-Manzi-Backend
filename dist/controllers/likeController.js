@@ -31,19 +31,9 @@ const createLike = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.createLike = createLike;
-// export const getLikes = async (req: Request, res: Response) => {
-//   try {
-//     const { blogId } = req.params; 
-//     const likes = await Like.find({ blogId }); 
-//     res.status(200).json({ likes });
-//   } catch (error) {
-//     res.status(500).json({ message: "Internal Server Error" });
-//   }
-// };
 const getLikes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const blogId = req.params.id;
-        // const commentid=req.params.id;
         const blog = yield Like_1.default.find();
         res.json(blog);
         const comment = new Like_1.default({ like: req.body.like, blogId: req.params.id });

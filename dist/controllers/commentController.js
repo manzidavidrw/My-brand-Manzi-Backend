@@ -60,7 +60,6 @@ const getCommentsByBlogId = (req, res) => __awaiter(void 0, void 0, void 0, func
         res.json(comments);
     }
     catch (error) {
-        console.error(error);
         res.status(500).json({ message: 'Internal server error' });
     }
 });
@@ -85,7 +84,6 @@ const deleteComment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         res.sendStatus(204);
     }
     catch (error) {
-        console.error(error);
         res.status(500).json({ message: 'Internal server error' });
     }
 });

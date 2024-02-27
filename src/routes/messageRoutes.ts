@@ -1,7 +1,7 @@
 // routes/messageRoutes.ts
 import express from 'express';
 import * as messageController from '../controllers/messageController';
-
+import * as auth from '../middlewares/authenticatication';
 const router = express.Router();
 
 router.post('/',messageController.createMessage);

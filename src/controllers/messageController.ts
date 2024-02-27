@@ -67,7 +67,6 @@ export const deleteMessage = async (req: Request, res: Response): Promise<void> 
         await Message.findByIdAndDelete(messageId);
         res.sendStatus(204);
     } catch (error) {
-        console.error(error);
         res.status(500).json({ message: 'Internal server error' });
     }
 };
