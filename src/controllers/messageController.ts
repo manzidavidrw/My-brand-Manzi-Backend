@@ -16,7 +16,6 @@ export const createMessage = async (req: Request, res: Response): Promise<void> 
       const savedMessage = await newMessage.save(); 
       res.status(201).json(savedMessage);
     } catch (error) {
-        console.error(error);
         res.status(500).json({ message: 'Internal server error' });
     }
 };
@@ -26,7 +25,7 @@ export const getMessages = async (req: Request, res: Response): Promise<void> =>
         const messages = await Message.find();
         res.json(messages);
     } catch (error) {
-        console.error(error);
+    
         res.status(500).json({ message: 'Internal server error' });
     }
 };
@@ -41,7 +40,7 @@ export const getMessageById = async (req: Request, res: Response): Promise<void>
         }
         res.json(messages);
     } catch (error) {
-        console.error(error);
+        
         res.status(500).json({ message: 'Internal server error' });
     }
 };
@@ -56,7 +55,7 @@ export const updateMessage = async (req: Request, res: Response): Promise<void> 
         }
         res.json(updatedMessage);
     } catch (error) {
-        console.error(error);
+       
         res.status(500).json({ message: 'Internal server error' });
     }
 };
