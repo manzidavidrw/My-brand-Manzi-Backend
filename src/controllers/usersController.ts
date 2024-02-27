@@ -4,7 +4,6 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 import _ from "lodash";
-// import { expectedLogin, expectedNewUser } from "../utils/validations";
 import { Response, Request } from "express";
 import User from "../models/User";
 
@@ -12,12 +11,6 @@ dotenv.config();
 
 export const createUser = async (req: Request, res: Response) => {
   const userData = _.pick(req.body, ["userName", "email", "password"]);
-
-  // const { error } = expectedNewUser.validate(userData);
-  // if (error) {
-  //   res.status(400).send({ data: [], message: "", error: error.message });
-  //   return;
-  // }
 
   try {
     const user = await User.findOne({ email: userData.email });
@@ -52,13 +45,7 @@ export const createUser = async (req: Request, res: Response) => {
 export const loginUser = async (req: Request, res: Response) => {
   const userData = _.pick(req.body, ["email", "password"]);
 
-  // const { error } = expectedLogin.validate(userData);
-  // if (error) {
-  //   return res
-  //     .status(400)
-  //     .send({ data: [], message: "", error: error.message });
-  // }
-
+  
   try {
     const user = await User.findOne({ email: userData.email });
     if (user) {

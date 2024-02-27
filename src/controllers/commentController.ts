@@ -1,7 +1,6 @@
 // src/controllers/commentsController.ts
 import { Request, Response } from 'express';
 import Comment from '../models/Comment';
-import Blog from '../models/Blog';
 import {commentSchema} from '../validators/commentValidators';
 
 interface IReqBodyComment extends Request {
@@ -71,7 +70,6 @@ export const getCommentsByBlogId = async (req: Request, res: Response): Promise<
         const comments = await Comment.find({ blog: blogId });
         res.json(comments);
     } catch (error) {
-        console.error(error);
         res.status(500).json({ message: 'Internal server error' });
     }
 };
@@ -95,7 +93,6 @@ export const deleteComment = async (req: Request, res: Response): Promise<void> 
         await Comment.findByIdAndDelete(id);
         res.sendStatus(204);
     } catch (error) {
-        console.error(error);
         res.status(500).json({ message: 'Internal server error' });
     }
 };

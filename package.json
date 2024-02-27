@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "jest --coverage",
-    "test:watch": "jest --watchAll --coverage --detectOpenHandles --verbose",
+    "test:watch": "jest --watchAll --coverage --detectOpenHandles --verbose",
     "start": "tsc && nodemon dist/app.js"
   },
   "keywords": [],

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">74.46% </span>
+                <span class="strong">63.82% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>35/47</span>
+                <span class='fraction'>30/47</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/3</span>
+                <span class='fraction'>0/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>8/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">67.56% </span>
+                <span class="strong">56.75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>25/37</span>
+                <span class='fraction'>21/37</span>
             </div>
         
             
@@ -134,11 +134,7 @@
 <a name='L69'></a><a href='#L69'>69</a>
 <a name='L70'></a><a href='#L70'>70</a>
 <a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L72'></a><a href='#L72'>72</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,16 +143,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -175,10 +167,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -221,19 +213,15 @@ import cloudinary from '../image/cloudimage';
 import { blogValidationSchema } from '../validators/BlogValidationSchema';
 &nbsp;
 &nbsp;
-export const createBlog = async (req: Request, res: Response) =&gt; {
-    try {
-        const { title, content } = req.body;
+export const createBlog = <span class="fstat-no" title="function not covered" >async (r</span>eq: Request, res: Response) =&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" > {</span></span>
+<span class="cstat-no" title="statement not covered" >    try {</span>
+        const { title, content } = <span class="cstat-no" title="statement not covered" >req.body;</span>
 &nbsp;
-        const { error } = blogValidationSchema.validate({title,content});
-    if (error) {
-      return res.status(400).json({ error: error.details[0].message });
+        const { error } = <span class="cstat-no" title="statement not covered" >blogValidationSchema.validate({title,content});</span>
+<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (error) {</span>
+<span class="cstat-no" title="statement not covered" >      return res.status(400).json({ error: error.details[0].message });</span>
     }
 &nbsp;
-   
-//   if (!req.user || !("userName" in req.user)) {
-//     return res.send({ data: [], message: "No UserName provided", error: null });
-//   }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (!req.file) {</span>
 <span class="cstat-no" title="statement not covered" >        return res.status(400).json({ error: 'No file uploaded' });</span>
@@ -253,7 +241,7 @@ export const createBlog = async (req: Request, res: Response) =&gt; {
 export const getBlogs = async (req: Request, res: Response) =&gt; {
     try {
         const blogs = await Blog.find();
-<span class="cstat-no" title="statement not covered" >        res.status(201).json(blogs);</span>
+        res.status(201).json(blogs);
     } catch (err) {
         res.status(500).json({ message: (err as Error).message });
     }
@@ -295,7 +283,7 @@ export const deleteBlog = async (req: Request, res: Response) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-02-24T22:09:12.262Z
+                at 2024-02-27T15:35:26.613Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

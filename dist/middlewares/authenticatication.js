@@ -62,3 +62,4 @@ const isAdmin = (req, res, next) => __awaiter(void 0, void 0, void 0, function* 
     }
 });
 exports.isAdmin = isAdmin;
+exports.default = passport_1.default;

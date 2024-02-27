@@ -21,11 +21,6 @@ const User_1 = __importDefault(require("../models/User"));
 dotenv_1.default.config();
 const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const userData = lodash_1.default.pick(req.body, ["userName", "email", "password"]);
-    // const { error } = expectedNewUser.validate(userData);
-    // if (error) {
-    //   res.status(400).send({ data: [], message: "", error: error.message });
-    //   return;
-    // }
     try {
         const user = yield User_1.default.findOne({ email: userData.email });
         if (user) {
@@ -59,12 +54,6 @@ const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 exports.createUser = createUser;
 const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const userData = lodash_1.default.pick(req.body, ["email", "password"]);
-    // const { error } = expectedLogin.validate(userData);
-    // if (error) {
-    //   return res
-    //     .status(400)
-    //     .send({ data: [], message: "", error: error.message });
-    // }
     try {
         const user = yield User_1.default.findOne({ email: userData.email });
         if (user) {

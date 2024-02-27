@@ -1,6 +1,6 @@
- import dotenv from "dotenv";
-  import _ from "lodash";
- import { Response, Request, NextFunction } from "express";
+import dotenv from "dotenv";
+import _ from "lodash";
+import { Response, Request, NextFunction } from "express";
 import passport from 'passport';
 import User  from "../models/User";
 import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt';
@@ -21,8 +21,8 @@ import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt';
         return done(null, user);
       } catch (error) {
         return done(error, false);
-      }
-    })
+    }
+   })
   );
 
 
@@ -58,5 +58,6 @@ import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt';
      return res.send("unauthorized content ...");
    }
  };
+ export default passport
  
 
