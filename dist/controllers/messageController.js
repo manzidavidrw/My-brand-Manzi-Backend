@@ -27,7 +27,6 @@ const createMessage = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         res.status(201).json(savedMessage);
     }
     catch (error) {
-        console.error(error);
         res.status(500).json({ message: 'Internal server error' });
     }
 });
@@ -38,12 +37,12 @@ const getMessages = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         res.json(messages);
     }
     catch (error) {
-        console.error(error);
+        
         res.status(500).json({ message: 'Internal server error' });
     }
 });
-exports.getMessages = getMessages;
-const getMessageById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+   exports.getMessages = getMessages;
+   const getMessageById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const messageId = req.params.id;
         const messages = yield Message_1.default.findById(messageId);
@@ -54,7 +53,6 @@ const getMessageById = (req, res) => __awaiter(void 0, void 0, void 0, function*
         res.json(messages);
     }
     catch (error) {
-        console.error(error);
         res.status(500).json({ message: 'Internal server error' });
     }
 });
@@ -70,7 +68,6 @@ const updateMessage = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         res.json(updatedMessage);
     }
     catch (error) {
-        console.error(error);
         res.status(500).json({ message: 'Internal server error' });
     }
 });
