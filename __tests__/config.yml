@@ -8,4 +8,4 @@ workflows:
     jobs:
       - node/test:
           version: '16.10'
-          pkg-manager: npm # If you are using yarn, change this to "yarn"
+          pkg-manager: npm 
