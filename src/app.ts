@@ -2,6 +2,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import blogRoutes from './routes/blogRoutes';
+import dotenv from 'dotenv';
 import commentRoutes from './routes/commentRoutes';
 import * as swaggerDocument from '../swagger.json';
 import swaggerUi from 'swagger-ui-express';
@@ -9,7 +10,6 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import messageRoutes from './routes/messageRoutes';
 import likeRoutes from './routes/likeRoutes';
 import userroutes from './routes/userroutes';
-import dotenv from 'dotenv';
 const app = express();
 
 app.use(express.json());

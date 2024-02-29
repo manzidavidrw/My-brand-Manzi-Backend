@@ -20,14 +20,20 @@ import { getBlogs } from '../src/controllers/blogController';
 dotenv.config();
 const dbURI = process.env.MONGODB_URI || '';
 
+jest.setTimeout(60000);
+
 beforeAll(async() =>{
-    await mongoose.connect(dbURI);
-},50000);
+    await mongoose.connect(dbURI,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    } as any);
+});
 
 
 afterAll(async() =>{
   await mongoose.connection.close();
-},80000);
+});
 
 describe('test Blog APIs', () =>{
   it('/api/ for 404', async()=>{
