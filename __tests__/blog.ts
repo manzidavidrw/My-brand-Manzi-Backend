@@ -36,7 +36,7 @@ describe('test Blog APIs', () =>{
   })
   it('getting a blog by ID', async()=>{
     const show  = await supertest(app).get('/api/blogs/:id');
-    expect(show.status).toBe(500);
+    expect(show.status).toBe(400);
 })
 it('Post a Blog', async()=>{
   const show  = await supertest(app).post('/api/blogs');
@@ -44,7 +44,7 @@ it('Post a Blog', async()=>{
 })
 it('delete a Blog', async()=>{
   const show  = await supertest(app).delete('/api/blogs/:id');
-  expect(show.status).toBe(500);
+  expect(show.status).toBe(400);
 })
 it('update a Blog', async()=>{
   const show  = await supertest(app).patch('/api/blogs/:id');
