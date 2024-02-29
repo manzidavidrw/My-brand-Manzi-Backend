@@ -21,7 +21,7 @@ import { getBlogs } from '../src/controllers/blogController';
 dotenv.config();
 const dbURI = process.env.MONGODB_URI || '';
 
- jest.setTimeout(60000);
+ jest.setTimeout(10000);
 
 afterAll(() => {
   closeServer();
@@ -64,11 +64,11 @@ it('update a Blog', async()=>{
 it('signup', async()=>{
     const show  = await supertest(app).post('/api/signup');
     expect(show.status).toBe(400);
-},50000)
+})
 it('Login', async()=>{
     const show  = await supertest(app).post('/api/login');
     expect(show.status).toBe(400);
-},50000)
+})
 });
 
 
@@ -80,15 +80,15 @@ describe('test querry APIs', () =>{
   it('getting All messages', async()=>{
       const show  = await supertest(app).get('/api/messsages');
       expect(show.status).toBe(404);
-  },50000)
+  })
   it('getting messages by id', async()=>{
     const show  = await supertest(app).get('/api/messsages/:id');
     expect(show.status).toBe(404);
-},50000)
+})
 it('update a message', async()=>{
   const show  = await supertest(app).patch('/api/messsages/:id');
   expect(show.status).toBe(404);
-},50000)
+})
 })
 
 describe('comments APIs', () =>{
@@ -99,15 +99,15 @@ describe('comments APIs', () =>{
   it('get a comments', async()=>{
     const result  = await supertest(app).get('/api/blogs/:id/comments');
     expect(result.status).toBe(200);
-},50000)
+})
 it('update a comment', async()=>{
   const result  = await supertest(app).patch('/api/blogs/:id/comments');
   expect(result.status).toBe(404);
-},50000)
+})
 it('delete a comment', async()=>{
   const result  = await supertest(app).delete('/api/blogs/:id/comments');
   expect(result.status).toBe(500);
-},50000)
+})
 
 })
 describe('likes APIs', () =>{

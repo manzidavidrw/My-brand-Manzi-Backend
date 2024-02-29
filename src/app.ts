@@ -2,7 +2,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import blogRoutes from './routes/blogRoutes';
-
+import cors from "cors";
 import commentRoutes from './routes/commentRoutes';
 import * as swaggerDocument from '../swagger.json';
 import swaggerUi from 'swagger-ui-express';
@@ -22,6 +22,9 @@ app.use('/api/messages', messageRoutes);
 app.use('/api/blogs', likeRoutes);
 app.use('/api', userroutes);
 app.use('/swagger',swaggerUi.serve,swaggerUi.setup(swaggerDocument))
+app.use(cors());
+
+
 
 
 export default app
