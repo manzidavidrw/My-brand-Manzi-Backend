@@ -1,5 +1,6 @@
 import{it,describe,expect,beforeAll,afterAll, jest, afterEach, beforeEach} from '@jest/globals';
-import app, { closeServer } from '../src/app';
+import app from '../src/app';
+import  { closeServer } from '../src/server'
 import mongoose from 'mongoose';
 import _ from 'lodash';
 import dotenv from 'dotenv';

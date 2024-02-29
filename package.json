@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --coverage --detectOpenHandles --testTimeout=60000",
     "test:watch": "jest --watchAll --coverage --detectOpenHandles --verbose",
-    "start": "tsc && nodemon dist/src/app.js"
+    "start": "tsc && nodemon dist/src/server.js"
   },
   "keywords": [],
   "author": "",
