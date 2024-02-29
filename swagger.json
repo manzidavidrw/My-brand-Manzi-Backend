@@ -17,6 +17,11 @@
         "tags": [
           "Blog"
         ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -712,7 +717,7 @@
         }
       }
     },
-    "/users": {
+    "/Signup": {
       "post": {
         "summary": "Create a new user",
         "tags": [
@@ -762,7 +767,7 @@
         }
       }
     },
-    "/users/login": {
+    "/login": {
       "post": {
         "summary": "Login user",
         "tags": [
@@ -824,6 +829,13 @@
     }
   },
   "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
     "schemas": {
       "Blog": {
         "type": "object",
