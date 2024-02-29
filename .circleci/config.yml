@@ -9,5 +9,5 @@ workflows:
       - node/test:
           version: '16.10'
           pkg-manager: npm 
-           test-commands:
-            - npm test -- --testTimeout=60000
+            environment:
+            NODE_OPTIONS: "--testTimeout=60000"
