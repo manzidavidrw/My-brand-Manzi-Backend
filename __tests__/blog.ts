@@ -20,7 +20,7 @@ import { getBlogs } from '../src/controllers/blogController';
 dotenv.config();
 const dbURI = process.env.MONGODB_URI || '';
 
-jest.setTimeout(60000);
+ jest.setTimeout(60000);
 
 afterAll(() => {
   closeServer();
