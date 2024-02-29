@@ -21,7 +21,10 @@ import { getBlogs } from '../src/controllers/blogController';
 dotenv.config();
 const dbURI = process.env.MONGODB_URI || '';
 
- jest.setTimeout(10000);
+
+ beforeAll(async() =>{
+  await mongoose.connect(dbURI);
+},10000);
 
 afterAll(() => {
   closeServer();
