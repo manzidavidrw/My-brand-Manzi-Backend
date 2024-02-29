@@ -8,10 +8,14 @@
   "servers": [
     {
       "url": "http://localhost:3000/api"
-    }
+    },
+    {
+      "url":"https://my-brand-manzi-backend.onrender.com/",
+      "description":"render development server"
+  }
   ],
   "paths": {
-    "/blogs": {
+    "api/blogs": {
       "post": {
         "summary": "Create a new blog post",
         "tags": [
@@ -102,7 +106,7 @@
         }
       }
     },
-    "/blogs/{id}": {
+    "api/blogs/{id}": {
       "get": {
         "summary": "Get a blog by ID",
         "tags": [
@@ -256,7 +260,7 @@
         }
       }
     },
-    "/blogs/{id}/comments": {
+    "api/blogs/{id}/comments": {
       "get": {
         "summary": "Get comments for a blog by ID",
         "tags": [
@@ -369,7 +373,7 @@
         }
       }
     },
-    "/blogs/{id}/likes": {
+    "api/blogs/{id}/likes": {
       "post": {
         "summary": "Add a like to a blog",
         "tags": [
@@ -482,7 +486,7 @@
         }
       }
     },
-    "/messages": {
+    "api/messages": {
       "post": {
         "summary": "Create a new message",
         "tags": [
@@ -563,7 +567,7 @@
         }
       }
     },
-    "/messages/{id}": {
+    "api/messages/{id}": {
       "get": {
         "summary": "Get a message by ID",
         "tags": [
@@ -717,7 +721,7 @@
         }
       }
     },
-    "/Signup": {
+    "api/Signup": {
       "post": {
         "summary": "Create a new user",
         "tags": [
@@ -767,7 +771,7 @@
         }
       }
     },
-    "/login": {
+    "api/login": {
       "post": {
         "summary": "Login user",
         "tags": [
