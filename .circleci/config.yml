@@ -8,5 +8,12 @@ workflows:
     jobs:
       - node/test:
           version: '16.10'
-          pkg-manager: npm 
-          timeout: 20m
+          pkg-manager: npm
+
+jobs:
+  node/test:
+    docker:
+      - image: circleci/node:16.10
+    steps:
+      - checkout
+    timeout: 20m 
