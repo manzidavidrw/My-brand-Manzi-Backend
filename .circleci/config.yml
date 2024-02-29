@@ -9,4 +9,4 @@ workflows:
       - node/test:
           version: '16.10'
           pkg-manager: npm 
-          timeout: 20m
+          
