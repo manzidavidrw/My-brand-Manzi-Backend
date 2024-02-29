@@ -1,5 +1,5 @@
 import{it,describe,expect,beforeAll,afterAll, jest, afterEach, beforeEach} from '@jest/globals';
-import app from '../src/app';
+import app, { closeServer } from '../src/app';
 import mongoose from 'mongoose';
 import _ from 'lodash';
 import dotenv from 'dotenv';
@@ -22,18 +22,22 @@ const dbURI = process.env.MONGODB_URI || '';
 
 jest.setTimeout(60000);
 
-beforeAll(async() =>{
-    await mongoose.connect(dbURI,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    } as any);
+afterAll(() => {
+  closeServer();
 });
 
+// beforeAll(async() =>{
+//     await mongoose.connect(dbURI,{
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true,
+//     } as any);
+// });
 
-afterAll(async() =>{
-  await mongoose.connection.close();
-});
+
+// afterAll(async() =>{
+//   await mongoose.connection.close();
+// });
 
 describe('test Blog APIs', () =>{
   it('/api/ for 404', async()=>{
