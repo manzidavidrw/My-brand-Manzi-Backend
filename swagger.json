@@ -10,7 +10,7 @@
       "url": "http://localhost:3000/api"
     },
     {
-      "url":"https://my-brand-manzi-backend.onrender.com/",
+      "url":"https://my-brand-manzi-backend.onrender.com/api/",
       "description":"render development server"
   }
   ],
