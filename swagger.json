@@ -173,7 +173,8 @@
             "required": true,
             "description": "ID of the blog to update",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{24}$"
             }
           }
         ],
