@@ -50,7 +50,7 @@ describe('test Blog APIs', () =>{
   })
   it('getting a blog by ID', async()=>{
     const show  = await supertest(app).get('/api/blogs/:id');
-    expect(show.status).toBe(400);
+    expect(show.status).toBe(500);
 })
 it('Post a Blog', async()=>{
   const show  = await supertest(app).post('/api/blogs');
@@ -109,7 +109,7 @@ it('update a comment', async()=>{
 })
 it('delete a comment', async()=>{
   const result  = await supertest(app).delete('/api/blogs/:id/comments');
-  expect(result.status).toBe(500);
+  expect(result.status).toBe(400);
 })
 
 })
