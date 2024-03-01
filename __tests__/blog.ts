@@ -24,7 +24,7 @@ const dbURI = process.env.MONGODB_URI || '';
 
  beforeAll(async() =>{
   await mongoose.connect(dbURI);
-},100000);
+},5000);
 
 afterAll(() => {
   closeServer();
