@@ -156,7 +156,7 @@
           }
         }
       },
-      "put": {
+      "patch": {
         "summary": "Update a blog by ID",
         "tags": [
           "Blog"
@@ -632,7 +632,7 @@
           }
         }
       },
-      "put": {
+      "patch": {
         "summary": "Update a message by ID",
         "tags": [
           "Message"
