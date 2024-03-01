@@ -10,7 +10,7 @@ const router = express.Router();
 router.post('/',isAuthenticated,upload.single('image'),blogController.createBlog);
 router.get('/',isAuthenticated,blogController.getBlogs);
 router.get('/:id', isAuthenticated,blogController.getBlogById);
-router.patch('/:id', isAuthenticated,isAdmin,blogController.updateBlog);
-router.delete('/:id', isAuthenticated,isAdmin,blogController.deleteBlog);
+router.patch('/:id', isAuthenticated,blogController.updateBlog);
+router.delete('/:id', isAuthenticated,blogController.deleteBlog);
 
 export default router;
