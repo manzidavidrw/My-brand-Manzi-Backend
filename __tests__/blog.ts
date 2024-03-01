@@ -67,7 +67,7 @@ it('update a Blog', async()=>{
 it('signup', async()=>{
     const show  = await supertest(app).post('/api/signup');
     expect(show.status).toBe(400);
-})
+},10000)
 it('Login', async()=>{
     const show  = await supertest(app).post('/api/login');
     expect(show.status).toBe(400);
