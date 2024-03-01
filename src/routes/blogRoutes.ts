@@ -8,8 +8,8 @@ const router = express.Router();
 
 
 router.post('/',isAuthenticated,upload.single('image'),blogController.createBlog);
-router.get('/',isAuthenticated,blogController.getBlogs);
-router.get('/:id', isAuthenticated,blogController.getBlogById);
+router.get('/',blogController.getBlogs);
+router.get('/:id',blogController.getBlogById);
 router.patch('/:id', isAuthenticated,blogController.updateBlog);
 router.delete('/:id', isAuthenticated,blogController.deleteBlog);
 

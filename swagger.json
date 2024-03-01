@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Blog API",
+    "title": "Blogs APIs",
     "description": "CRUD operations for managing blogs, comments, likes, and messages",
     "version": "1.0.0"
   },
@@ -11,7 +11,7 @@
     },
     {
       "url":"https://my-brand-manzi-backend.onrender.com/api/",
-      "description":"render development server"
+      "description":"render"
   }
   ],
   "paths": {
@@ -161,6 +161,11 @@
         "tags": [
           "Blog"
         ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "in": "path",
@@ -219,6 +224,11 @@
         "summary": "Delete a blog by ID",
         "tags": [
           "Blog"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
         ],
         "parameters": [
           {
@@ -626,6 +636,11 @@
         "summary": "Update a message by ID",
         "tags": [
           "Message"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
         ],
         "parameters": [
           {
