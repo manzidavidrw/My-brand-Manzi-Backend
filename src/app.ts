@@ -15,14 +15,14 @@ const app = express();
 app.use(express.json());
 
 
-
+app.use(cors());
 app.use('/api/blogs', blogRoutes);
 app.use('/api/blogs', commentRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/blogs', likeRoutes);
 app.use('/api', userroutes);
 app.use('/swagger',swaggerUi.serve,swaggerUi.setup(swaggerDocument))
-app.use(cors());
+
 
 
 

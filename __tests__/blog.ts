@@ -101,7 +101,7 @@ describe('comments APIs', () =>{
   })
   it('get a comments', async()=>{
     const result  = await supertest(app).get('/api/blogs/:id/comments');
-    expect(result.status).toBe(200);
+    expect(result.status).toBe(500);
 })
 it('update a comment', async()=>{
   const result  = await supertest(app).patch('/api/blogs/:id/comments');

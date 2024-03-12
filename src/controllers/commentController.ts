@@ -66,8 +66,8 @@ export const  CreateComment= async(req: IReqBodyComment, res: Response) =>{
 
 export const getCommentsByBlogId = async (req: Request, res: Response): Promise<void> => {
     try {
-        const { blogId } = req.params;
-        const comments = await Comment.find({ blog: blogId });
+        const  blogId  = req.params.id;
+        const comments = await Comment.find({ blogId: blogId });
         res.json(comments);
     } catch (error) {
         res.status(500).json({ message: 'Internal server error' });
